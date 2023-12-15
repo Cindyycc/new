@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-CAN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <title>Cindy Chuong</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial;
+    }
+
+    /* Body Styling */
+    body {
+      background: #fff1ff;
+      color: black;
+      font-size: 14px;
+    }
+
+    /* Header Styling */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px 5%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Logo Styling */
+    .logo {
+      font-size: 18px;
+      color: darkgrey;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Navbar Styling */
+    .navbar ul{
+      list-style: none;
+      font-weight: 600;
+      display: block;
+      float: left;
+      margin-left: 0;
+      justify-content: space-between;
+    }
+
+    .navbar li {
+      float: left;
+      padding: 10px;
+    }
+
+    /* Navbar Links Styling */
+    .navbar a {
+      font-size: 14px;
+      color: darkgrey;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+      color: lightpink;
+    }
+
+    /* Home Section Styling */
+    .home {
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      justify-content: center;
+    }
+
+    .home-content {
+      max-width: 400px;
+    }
+
+    .home-content h1,
+    .home-content h3,
+    .home-content p {
+      margin-bottom: 15px;
+    }
+
+    /* Button Styling */
+    .button {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+      height: 40px;
+    }
+
+    .button a {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 120px;
+      height: 100%;
+      background: white;
+      border: 2px solid pink;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #fff1fa;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      z-index: 1;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .button a:nth-child(2) {
+      background: transparent;
+      color: white;
+    }
+
+    .button a:hover {
+      background: pink;
+      color: black;
+    }
+
+    .button a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: red;
+      z-index: -1;
+      transition: width 0.5s;
+    }
+
+    .button a:hover::before {
+      width: 100%;
+    }
+
+    .pfp img {
+      border-radius: 25%;
+    }
+
+    /* About Section Styling */
+    .about {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      padding: 50px;
+    }
+
+    .about-img img {
+      width: 25vw;
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 3.5rem;
+    }
+
+    .about-content h2 {
+      text-align: left;
+      line-height: 1.2;
+    }
+
+    .about-content h3 {
+      font-size: 1.8rem;
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      margin: 1rem 0 2rem;
+    }
+
+    /* Skills Section Styling */
+    .skills h2 {
+      margin-bottom: 3rem;
+    }
+
+    .skills-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skills-container .skill-box {
+      flex: 1 1 20rem;
+      background: #fff1ff;
+      padding: 2rem 1.5rem 3rem;
+      border-radius: 1.5rem;
+      text-align: center;
+      border: .2rem solid blue;
+      transition: .5s ease;
+    }
+
+    .skills-container .skill-box:hover {
+      border-color: red;
+      transform: scale(1.02);
+    }
+
+    .skill-box i {
+      font-size: 4rem;
+      color: grey;
+    }
+
+    .skill-box h3 {
+      font-size: 1.8rem;
+    }
+
+    .skill-box p {
+      font-size: 1rem;
+      margin: 0.5rem 0 2rem;
+    }
+
+    /* Portfolio Section Styling */
+    .portfolio h2 {
+      margin-bottom: 5px;
+    }
+
+    .scroll-container {
+      background-color: #333;
+      overflow: auto;
+      white-space: nowrap;
+      padding: 5px;
+    }
+
+    .scroll-container img {
+      padding: 5px;
+      height: 30%;
+    }
+
+    /* Contact Section Styling */
+    .contact h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact form {
+      max-width: 60rem;
+      margin: 1rem auto;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact form .inputbox {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .contact form .inputbox input,
+    .contact form textarea {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      color: purple;
+      background: white;
+      border-radius: .6rem;
+      margin: .5rem 0;
+    }
+
+    .contact form .inputbox input {
+      width: 49%;
+    }
+
+    .contact form textarea {
+      resize: none;
+    }
+
+    .contact form .button {
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    /* Footer Section Styling */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1rem 5%;
+      background: white;
+    }
+
+    .footer-text p {
+      font-size: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="#home" class="logo">CINDY CHUONG</a>
+
+  <nav class="navbar">
+    <ul>
+      <li> <a href="#home" class="active"> Home </a> </li>
+      <li> <a href="#about"> About</a> </li>
+      <li> <a href="#skills"> Skills</a> </li>
+      <li> <a href="#portfolio"> Portfolio</a> </li>
+      <li> <a href="#contact"> Contact</a> </li>
+    </ul>
+  </nav>
+</header>
+
+
+  <section class="home" id="home">
+    <div class="home-content">
+      <h1>Hello, my name is Cindy</h1>
+      <h3>Design, Business, and Technology</h3>
+      <p>About my paragraph</p>
+      <div class="button">
+        <a href="#">Resume</a>
+        <a href="#">Let's Talk</a>
+      </div>
+    </div>
+    <div class="pfp">
+      <img src="cindy.jpg" alt="Cindy" width="400px">
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-img">
+      <img src="cindy.jpg" alt="Cindy" width="400px">
+    </div>
+    <div class="about-content">
+      <h2 class="heading">About <span>Me</span></h2>
+      <h3>Developer</h3>
+      <p>
+        I am an undergraduate student studying Global Business and Digital Arts at the University of Waterloo, with hopes
+        of pursuing a minor in computing.
+      </p>
+      <a href="#" class="button">Read more</a>
+    </div>
+  </section>
+
+  <section class="skills">
+    <h2 class="heading">Skills</h2>
+    <div class="skills-container">
+      <div class="skill-box">
+        <i class="bx bx-heart-circle"></i>
+        <h3>Design Skills</h3>
+        <p>Photoshop, Illustrator, Premier Pro, After Effects, In Design, Figma, Canva</p>
+        <a href="#" class="button">Read more</a>
+      </div>
+
+      <div class="skill-box">
+        <i class="bx bxs-business"></i>
+        <h3>Business Skills</h3>
+        <p>Skrapp.io, Zoom info, Gmail Mail Merge, G-suite, Microsoft Office.</p>
+        <a href="#" class="button">Read more</a>
+      </div>
+
+      <div class="skill-box">
+        <i class="bx bx-expand-horizontal"></i>
+        <h3>Coding Languages</h3>
+        <p>HTML CSS PYTHON JAVASCRIPT</p>
+        <a href="#" class="button">Read more</a>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="heading">Projects</h2>
+  <section class="portfolio" id="portfolio">
+    <div class="projects">
+      <div class="projectbox">
+        <h3>Photography</h3>
+        <div class="scroll-container">
+          <img src="action shot.png" alt="Forest">
+          <img src="animal shot.png" alt="Northern Lights">
+          <img src="landscape shot.png" alt="Mountains">
+          <img src="macro shot.png" alt="Forest">
+          <img src="product shot.png" alt="Northern Lights">
+          <img src="portrait shot.png" alt="Mountains">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me!</span></h2>
+
+    <form action="#">
+      <div class="input-box">
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+      </div>
+      <div class="input-box">
+        <input type="number" placeholder="Mobile Number">
+        <input type="text" placeholder="Email Subject">
+      </div>
+      <textarea name="" cols="30" rows="10" placeholder="Your Message"></textarea>
+      <input type="submit" value="Send Message" class="button">
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-text">
+      <p>Copyright &copy; 2023 CINDY NGUYEN CHUONG | All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
